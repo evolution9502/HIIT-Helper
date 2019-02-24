@@ -7,6 +7,7 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -31,18 +32,22 @@ public class ExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
         intPrepareTime = Integer.parseInt(getIntent().getStringExtra(PREPARE_TIME));
         intExerciseTime = Integer.parseInt(getIntent().getStringExtra(EXERCISE_TIME));
         intRestTime = Integer.parseInt(getIntent().getStringExtra(REST_TIME));
         intCalmTime = Integer.parseInt(getIntent().getStringExtra(CALM_TIME));
         intMoveCount = Integer.parseInt(getIntent().getStringExtra(MOVE_COUNT));
         intCircles = Integer.parseInt(getIntent().getStringExtra(CIRCLES));
+
         showingCurrentStatus = findViewById(R.id.tv_status);
         showingTime = findViewById(R.id.tv_time);
         showingMoveCount = findViewById(R.id.tv_move_count);
         showingCircles = findViewById(R.id.tv_circles);
         pause = findViewById(R.id.btn_pause);
         restart = findViewById(R.id.btn_restart);
+
         pause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,6 +95,8 @@ public class ExerciseActivity extends AppCompatActivity {
 
             @Override
             public void onTick(long millisUntilFinished) {
+                if (mp!=null)
+                    mp.stop();
                 isExerciseStarted=true;
                 isExercising=true;
                 currentTime = millisUntilFinished;
@@ -126,6 +133,8 @@ public class ExerciseActivity extends AppCompatActivity {
 
             @Override
             public void onTick(long millisUntilFinished) {
+                if (mp!=null)
+                    mp.stop();
                 isExercising=false;
                 currentTime = millisUntilFinished;
                 showingCurrentStatus.setText("喘氣中...");
@@ -147,6 +156,8 @@ public class ExerciseActivity extends AppCompatActivity {
             }
             @Override
             public void onTick(long millisUntilFinished) {
+                if (mp!=null)
+                    mp.stop();
                 currentTime = millisUntilFinished;
                 showingTime.setText(""+millisUntilFinished/1000+" 後開始");
                 if (millisUntilFinished/1000 < 4 ) {
