@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
         toDiffTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Intent i =new Intent(MainActivity.this, DiffTimeSettingActivity.class);
-                //startActivity(i);
-                Toast.makeText(MainActivity.this, "此項功能尚未做好，近期更新，請耐心等候...", Toast.LENGTH_SHORT).show();
+                Intent i =new Intent(MainActivity.this, DiffTimeSettingActivity.class);
+                startActivity(i);
+                //Toast.makeText(MainActivity.this, "此項功能尚未做好，近期更新，請耐心等候...", Toast.LENGTH_SHORT).show();
             }
         });
     }
