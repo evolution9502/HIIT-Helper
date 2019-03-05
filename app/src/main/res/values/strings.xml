@@ -4,4 +4,9 @@
     <string name="rest_move">休息時間</string>
     <string name="exercise_move">運動時間</string>
     <string name="calm_move">緩和時間</string>
+
+    <string name="fixed_time">每組固定時間</string>
+    <string name="diff_time">每組不同時間</string>
+
+    <string name="menu_delete">刪除</string>
 </resources>

@@ -7,15 +7,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import mehdi.sakout.fancybuttons.FancyButton;
+
 public class MainActivity extends AppCompatActivity {
-    Button toFixedTimer;
-    Button toDiffTimer;
+    FancyButton toFixedTimer;
+    FancyButton toDiffTimer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        toFixedTimer = (Button) findViewById(R.id.btn_to_fixed);
-        toDiffTimer = (Button) findViewById(R.id.btn_to_diff);
+        toFixedTimer = (FancyButton) findViewById(R.id.btn_to_fixed);
+        toDiffTimer = (FancyButton) findViewById(R.id.btn_to_diff);
         toFixedTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
